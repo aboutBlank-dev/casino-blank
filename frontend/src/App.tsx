@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
+  const [message, setMessage] = useState("");
+
   const fetchData = async () => {
     const response = await fetch("/api");
     const data = await response.json();
-    console.log(data.message);
+    setMessage(data.message);
   };
 
   useEffect(() => {
@@ -14,7 +16,7 @@ function App() {
 
   return (
     <div>
-      <h1>React App</h1>
+      <h1>{message}</h1>
     </div>
   );
 }
